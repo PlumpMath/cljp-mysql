@@ -1,1 +1,10 @@
+
 (ns cljp-mysql.core)
+
+; Public
+
+(defn make-connection
+  "Makes a MySQL connection"
+  [host user pass]
+  (php/mysql_connect host user pass))
+
