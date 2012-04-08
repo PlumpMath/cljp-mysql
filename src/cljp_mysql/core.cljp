@@ -5,6 +5,11 @@
 
 (defn make-connection
   "Makes a MySQL connection"
-  [host user pass]
-  (php/mysql_connect host user pass))
+  [host user pass db]
+  (let [cnn (php/mysql_connect host user pass)]
+    (php/mysql_select_db db cnn)))
 
+(defn query
+  "Perfrom a query and return a sequence of results"
+  [cnn sql]
+  (php/mysql_query sql cnn))
